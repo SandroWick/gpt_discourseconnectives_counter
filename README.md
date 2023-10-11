@@ -2,7 +2,7 @@
 
 #### Überblick
 
-Mein Ansatz war, mithilfe eines kleinen Programms die Häufigkeit von Diskursmarkern ("discourse connectives") in Artikeln, die durch das ChatGPT zugrundliegenden Sprachmodell vervollständigt wurden. Ziel war es, den Stil von ChatGPT mit dem von menschlichen Autor:innen abzugleichen, insbesondere in Bezug auf die Verwendung dieser Diskursmarker.
+Mein Ansatz war, mithilfe eines kleinen Programms die Häufigkeit von Diskursmarkern ("discourse connectives") in Artikeln zu zählen, die durch das ChatGPT zugrundliegenden Sprachmodell vervollständigt wurden und diese mit dem Origialartikel zu vergleichen. Ziel war es, den Stil von ChatGPT mit dem von menschlichen Autor:innen abzugleichen, insbesondere in Bezug auf die Verwendung dieser Diskursmarker.
 
 #### Anforderungen
 
