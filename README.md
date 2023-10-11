@@ -7,8 +7,8 @@ Mein Ansatz war, mithilfe eines kleinen Programms die Häufigkeit von Diskursmar
 #### Anforderungen
 
 - Python 3.x
-- OpenAI Python-Paket
-- Ein TSV-Korpus mit Artikeln
+- OpenAI Python-Paket und API-Key
+- Ein TSV-Korpus mit Artikeln (abgelegt im data/ Ordner)
 
 #### Verwendung
 
