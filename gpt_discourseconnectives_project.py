@@ -2,24 +2,25 @@ import openai
 import csv
 import argparse
 from collections import Counter
+from typing import List
 from data.discourse_connectors import discourse_connectors
 
 # Ihr OpenAI GPT-3 API-Schlüssel
 api_key = "[insert your API KEY here]"
 
-def parse_arguments():
+def parse_arguments() -> argparse.Namespace:
     """CLI-Argumente parsen."""
     parser = argparse.ArgumentParser(description='Vergleicht die Häufigkeit von Diskursmarkern in Artikeln und GPT-3 Texten.')
     parser.add_argument('korpus', help='Pfad zum TSV-Korpus')
     parser.add_argument('--anzahl_artikel', type=int, default=10, help='Anzahl der zu vergleichenden Artikel')
     return parser.parse_args()
 
-def count_connectors(text, connectors):
+def count_connectors(text: str, connectors, List) -> Counter:
     """Zählt die Diskursmarker im Text."""
     words = text.lower().split()
     return Counter([word for word in words if word in connectors])
 
-def get_gpt_text(prompt, token_limit):
+def get_gpt_text(prompt: str, token_limit: int) -> str:
     """Holt den generierten Text von GPT-3."""
     openai.api_key = api_key
     response = openai.Completion.create(
@@ -29,12 +30,12 @@ def get_gpt_text(prompt, token_limit):
     )
     return response.choices[0].text.strip()
 
-def trim_to_same_length(article_text, gpt_text):
+def trim_to_same_length(article_text: str, gpt_text: str) -> (str, str):
     """Kürzt die Texte auf die gleiche Länge."""
     token_limit = min(len(article_text.split()), len(gpt_text.split()))
     return ' '.join(article_text.split()[:token_limit]), ' '.join(gpt_text.split()[:token_limit])
 
-def total_connectors(counter):
+def total_connectors(counter: Counter) -> int:
     """Berechnet die Gesamtanzahl der Diskursmarker in einem Counter."""
     return sum(counter.values())
 
