@@ -35,7 +35,7 @@ def trim_to_same_length(article_text: str, gpt_text: str) -> (str, str):
     token_limit = min(len(article_text.split()), len(gpt_text.split()))
     return ' '.join(article_text.split()[:token_limit]), ' '.join(gpt_text.split()[:token_limit])
 
-def total_connectors(counter: Counter) -> int:
+def sum_total_connectors(counter: Counter) -> int:
     """Berechnet die Gesamtanzahl der Diskursmarker in einem Counter."""
     return sum(counter.values())
 
@@ -89,8 +89,8 @@ def main():
                 article_counts = count_connectors(article_text, discourse_connectors)
                 gpt_counts = count_connectors(gpt_text, discourse_connectors)
 
-                article_total = total_connectors(article_counts)
-                gpt_total = total_connectors(gpt_counts)
+                article_total = sum_total_connectors(article_counts)
+                gpt_total = sum_total_connectors(gpt_counts)
 
                 # Ergebnisse in der CSV-Datei speichern
                 writer.writerow({'Head': head, 'Article_Connectors': article_total, 'Article_Text': article_text, 'GPT_Connectors': gpt_total, 'GPT_Text': gpt_text})
